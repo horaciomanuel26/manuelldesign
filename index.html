@@ -3,216 +3,443 @@
 <html class="light" lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manuellart</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/estilo/style.css">
-    <link rel="stylesheet" href="/estilo/menu.css">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>manuelldesigner | Design que conta a sua história</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#b5c9d6",
+                        "surface-container-highest": "#e0e3e7",
+                        "surface-tint": "#575f65",
+                        "on-background": "#181c20",
+                        "primary": "#575f65",
+                        "secondary-container": "#dde0e2",
+                        "on-primary-fixed": "#151d22",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#0a1e27",
+                        "background": "#f7f9fe",
+                        "on-secondary-fixed": "#181c1e",
+                        "secondary": "#5b5f61",
+                        "primary-fixed": "#dbe3ea",
+                        "surface-variant": "#e0e3e7",
+                        "surface-dim": "#d7dadf",
+                        "on-surface-variant": "#44474a",
+                        "surface-bright": "#f7f9fe",
+                        "primary-container": "#e1e9f0",
+                        "on-surface": "#181c20",
+                        "inverse-surface": "#2d3135",
+                        "surface-container": "#ebeef3",
+                        "tertiary-container": "#d7ebf8",
+                        "outline-variant": "#c4c7ca",
+                        "outline": "#74777b",
+                        "on-secondary-container": "#5f6365",
+                        "on-primary-container": "#61696f",
+                        "primary-fixed-dim": "#bfc8ce",
+                        "surface": "#f7f9fe",
+                        "tertiary": "#4e616c",
+                        "on-secondary-fixed-variant": "#434749",
+                        "surface-container-low": "#f1f4f9",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "tertiary-fixed": "#d1e6f2",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e0e3e5",
+                        "inverse-primary": "#bfc8ce",
+                        "surface-container-high": "#e5e8ed",
+                        "on-primary-fixed-variant": "#40484d",
+                        "inverse-on-surface": "#eef1f6",
+                        "on-tertiary-container": "#576b75",
+                        "on-tertiary-fixed-variant": "#374953"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "32px",
+                        "unit": "8px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["60px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "300" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "0", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .soft-glow {
+            box-shadow: 0 20px 40px -10px rgba(87, 95, 101, 0.06);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
 </head>
 
-<body>
-    <div class="menu" ip="pc">
-        <div class="logo">
-            <a href="#">MANUELLART</a>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+    <!-- menu -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm shadow-primary/5 transition-all duration-300 ease-in-out">
+        <div class="flex justify-between items-center h-20 px-6 md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary" data-icon="design_services">design_services</span>
+                <span
+                    class="font-headline-md text-headline-md tracking-tight text-on-surface dark:text-on-surface-variant">manuelldesigner</span>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-10">
+                <a class="font-body-md text-body-md text-primary font-medium border-b border-primary pb-1 transition-all duration-300"
+                    href="#portfolio">Portfolio</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                    href="#services">Services</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                    href="#about">About</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300"
+                    href="#contact">Contact</a>
+            </div>
+            <!-- Mobile Menu Toggle (Simplified) -->
+            <button class="md:hidden text-on-surface p-2">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
-        <div class="links">
-            <a href="#home">Início</a>
-            <a href="#servico">Servico</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#sobre">Sobre</a>
-        </div>
-    </div>
-    <div class="menu1" ip="telefone">
-        <div class="logo">
-            <a href="#">MANUELLART</a>
-            <a href="#" ip="botao">:::</a>
-        </div>
-        <div class="links">
-            <a href="#home">Início</a>
-            <a href="#servico">Servico</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#sobre">Sobre</a>
-            <a href="https://www.facebook.com/profile.php?id=100063853777708" target="_blank"><i
-                    class="fab fa-facebook"></i> facebbok</a>
-            <a href="https://wa.me/244942347516?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Manuellart."
-                target="_blank">
-                <i class="fab fa-whatsapp"></i> whatsapp
-            </a>
-            <a href="https://www.instagram.com/horaciomanuel99/" target="_blank"><i class="fab fa-instagram"></i>
-                instagram</a>
-
-        </div>
-    </div>
-
-    <div class="banner" id="home">
-        <div class="escuro"></div>
-        <div class="descricao">
-            <h2>
-                MANUELLART <br>
-            </h2>
-            <p>
-                Designer Gráfico e Web Design <br>
-                Criando experiências visuais marcantes <br>
-                Unindo inovação e criatividade para sua marca <br>
-                Transformando ideias em realidade através do design <br>
-            </p>
-            <a class="btn1"
-                href="https://wa.me/244942347516?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Manuellart."
-                target="_blank">
-                Entrar em Contacto
-            </a>
-        </div>
-    </div>
-
-    <div class="section" id="servico">
-        <div class="tema">
-            <h1>Serviços</h1>
-        </div>
-        <div class="conteudo">
-            <div class="cada">
-                <img src="/imagens/27.jpg" alt="Postagem para Redes Sociais">
-                <h2>Posts</h2>
-                <div class="descricao">
-                    <p>Material visual impactante para fortalecer sua presença nas redes sociais.</p>
+    </nav>
+    <main class="pt-20">
+        <!-- apresentacao -->
+        <section class="relative min-h-[751px] flex items-center overflow-hidden px-6 md:px-margin-desktop bg-surface">
+            <div class="max-w-container-max mx-auto grid md:grid-cols-2 items-center gap-12 w-full">
+                <div class="z-10">
+                    <span
+                        class="font-label-sm text-label-sm text-primary uppercase mb-6 block tracking-[0.2em] reveal">Freelance
+                        Designer</span>
+                    <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface mb-8 reveal"
+                        style="transition-delay: 100ms;">
+                        Design que conta a <br class="hidden md:block" />sua história.
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mb-10 reveal"
+                        style="transition-delay: 200ms;">
+                        Transformando conceitos complexos em interfaces serenas, precisas e sofisticadas para marcas que
+                        valorizam a clareza.
+                    </p>
+                    <div class="flex gap-4 reveal" style="transition-delay: 300ms;">
+                        <a class="bg-primary-container text-on-primary-container px-8 py-4 font-label-sm text-label-sm rounded-full hover:shadow-lg transition-all duration-300 flex items-center gap-2"
+                            href="#portfolio">
+                            VER PORTFOLIO
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative hidden md:block reveal" style="transition-delay: 400ms;">
+                    <div
+                        class="aspect-square bg-tertiary-container rounded-full opacity-20 absolute -top-10 -right-10 blur-3xl w-full h-full">
+                    </div>
+                    <img alt="Abstract Minimalist Design"
+                        class="rounded-xl w-full h-auto object-cover soft-glow relative z-10"
+                        src="imagens/bg.png" />
                 </div>
             </div>
-            <div class="cada">
-                <img src="/imagens/25.jpg" alt="Design de Stories">
-                <h2>Stories</h2>
-                <div class="descricao">
-                    <p>Designs exclusivos e personalizados para histórias de Instagram, Facebook, e mais.</p>
+        </section>
+        <!-- servicos -->
+        <section class="py-32 md:py-40 px-6 md:px-margin-desktop bg-surface-container-low" id="services">
+            <div class="max-w-container-max mx-auto">
+                <div class="mb-24 text-center">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 reveal">Serviços</h2>
+                    <div class="h-1 w-12 bg-primary mx-auto reveal" style="transition-delay: 100ms;"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 md:gap-gutter">
+                    <!-- Service 1 -->
+                    <div
+                        class="bg-surface p-10 rounded-xl soft-glow reveal border border-transparent hover:border-primary-container transition-all duration-500">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6"
+                            data-icon="auto_awesome">auto_awesome</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Identidade Visual</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Criação de marcas memoráveis através de uma linguagem visual coerente, tipografia refinada e
+                            paletas atemporais.
+                        </p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-surface p-10 rounded-xl soft-glow reveal border border-transparent hover:border-primary-container transition-all duration-500"
+                        style="transition-delay: 100ms;">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6"
+                            data-icon="devices">devices</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Design Digital</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Interfaces intuitivas que priorizam a experiência do usuário, focadas em usabilidade,
+                            estética e performance.
+                        </p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-surface p-10 rounded-xl soft-glow reveal border border-transparent hover:border-primary-container transition-all duration-500"
+                        style="transition-delay: 200ms;">
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6"
+                            data-icon="lightbulb">lightbulb</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Consultoria Criativa</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant">
+                            Orientação estratégica para alinhar o posicionamento da sua marca com um design que ressoa
+                            com seu público ideal.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="cada">
-                <img src="/imagens/20.jpg" alt="Flyer Design">
-                <h2>Flyers</h2>
-                <div class="descricao">
-                    <p>Criação de flyers atraentes e informativos para divulgar seus eventos ou ofertas.</p>
+        </section>
+        <!-- Portfolio -->
+        <section class="py-32 md:py-40 px-6 md:px-margin-desktop" id="portfolio">
+            <div class="max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-6">
+                    <div class="max-w-xl">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 reveal">Trabalhos Selecionados
+                        </h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant reveal"
+                            style="transition-delay: 100ms;">Uma amostra de projetos onde a estética encontra a
+                            funcionalidade.</p>
+                    </div>
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <a href="https://www.instagram.com/manuell.designer/"
+                            class="font-label-sm text-label-sm text-primary border-b border-primary-container pb-2 cursor-pointer hover:opacity-70 transition-opacity">Ver
+                            Visitar o Instagram</a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <div class="group cursor-pointer reveal">
+                        <div class="overflow-hidden rounded-xl">
+                            <img class="w-[320px] h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="imagens/1.png" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4 class="font-headline-md text-headline-md text-on-surface">
+                                Ether Studio
+                            </h4>
+                            <p
+                                class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">
+                                Identidade Visual
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="group cursor-pointer reveal">
+                        <div class="overflow-hidden rounded-xl">
+                            <img class="w-[320px] h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="imagens/2.png" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4 class="font-headline-md text-headline-md text-on-surface">
+                                Ether Studio
+                            </h4>
+                            <p
+                                class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">
+                                Identidade Visual
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="group cursor-pointer reveal">
+                        <div class="overflow-hidden rounded-xl">
+                            <img class="w-[320px] h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="imagens/3.png" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4 class="font-headline-md text-headline-md text-on-surface">
+                                Ether Studio
+                            </h4>
+                            <p
+                                class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">
+                                Identidade Visual
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="group cursor-pointer reveal">
+                        <div class="overflow-hidden rounded-xl">
+                            <img class="w-[320px] h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
+                                src="imagens/4.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4 class="font-headline-md text-headline-md text-on-surface">
+                                Ether Studio
+                            </h4>
+                            <p
+                                class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">
+                                Identidade Visual
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+        <!-- sobre nos -->
+        <section class="py-32 md:py-40 px-6 md:px-margin-desktop bg-surface-container-lowest" id="about">
+            <div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Design que transforma marcas em referências
+                    </h2>
+                    <div class="space-y-6 font-body-md text-body-md text-on-surface-variant">
+                        <p>
 
+                            Ajudamos empresas, negócios e profissionais a terem uma presença visual forte, moderna e
+                            profissional. Criamos identidades visuais, designs para redes sociais e materiais criativos
+                            que aumentam a credibilidade da marca e fazem o público confiar mais no seu negócio.
+                            <br><br>
+                            Muitas empresas têm bons serviços, mas não conseguem transmitir valor através da sua imagem.
+                            O nosso trabalho é transformar ideias em marcas memoráveis, organizadas e visualmente
+                            impactantes, ajudando cada cliente a destacar-se da concorrência e atrair mais atenção no
+                            ambiente digital.
 
-    <div class="section1" id="portfolio">
-        <div class="tema">
-            <h2>Portfolio</h2>
-        </div>
-        <div class="conteudo">
-            <div class="cada">
-                <img src="/imagens/1.jpg" alt="" data-src="/imagens/1.jpg">
-                <img src="/imagens/23.jpg" alt="" data-src="/imagens/23.jpg">
-                <img src="/imagens/15.png" alt="" data-src="/imagens/15.png">
-                <img src="/imagens/22.jpg" alt="" data-src="/imagens/22.jpg">
-                <img src="/imagens/20.jpg" alt="" data-src="/imagens/20.jpg">
-                <img src="/imagens/19.jpg" alt="" data-src="/imagens/19.jpg">
-                <img src="/imagens/26.jpg" alt="" data-src="/imagens/26.jpg">
-                <img src="/imagens/capa4.png" alt="" data-src="/imagens/capa4.png">
-                <img src="/imagens/21.jpg" alt="" data-src="/imagens/21.jpg">
-                <img src="/imagens/24.jpg" alt="" data-src="/imagens/24.jpg">
-                <img src="/imagens/27.jpg" alt="" data-src="/imagens/27.jpg">
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 reveal" style="transition-delay: 100ms;">
+                    <div class="relative inline-block w-full">
+                        <div
+                            class="absolute inset-0 bg-tertiary-fixed-dim rounded-xl transform rotate-3 -z-10 opacity-30">
+                        </div>
+                        <img alt="Designer Workspace" class="rounded-xl w-full h-auto object-cover soft-glow"
+                            data-alt="A meticulously organized designer's desk in a bright, airy studio filled with soft daylight. On the desk lies a professional tablet, a few high-quality stationery items, and a small architectural model. The space is decorated with a single green plant in a ceramic pot. The aesthetic is extremely clean and minimalist, using a palette of white, wood, and pale blue, conveying a sense of intentionality and calm productivity."
+                            src="imagens/2.png"/>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="model">
-        <img src="" alt="">
-    </div>
-
-
-    <div class="section2" id="sobre">
-        <div class="organizar">
-            <div class="tema">
-                <h3>Sobre nós</h3>
-            </div>
-            <div class="descricao">
-                <p>
-                    Na Manuellart, acreditamos que cada projeto é uma oportunidade para criar algo único e
-                    significativo.
-                    Somos especialistas em design gráfico, web design e interfaces visuais (UI/UX). Nossa missão é
-                    transformar ideias em soluções criativas que conectem marcas com seu público.
+        </section>
+        <!-- contacto -->
+        <section class="py-32 md:py-48 px-6 md:px-margin-desktop bg-primary text-on-primary text-center" id="contact">
+            <div class="max-w-2xl mx-auto reveal">
+                <h2
+                    class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-10 text-white">
+                    Vamos criar algo incrível?</h2>
+                <p class="font-body-lg text-body-lg text-primary-fixed mb-12 opacity-80">
+                    Estou sempre em busca de novos desafios e marcas que queiram elevar sua presença visual. Entre em
+                    contato e vamos conversar.
                 </p>
+                <button
+                    class="bg-surface-container-lowest text-primary px-10 py-5 font-label-sm text-label-sm rounded-full hover:scale-105 transition-all duration-300 shadow-xl flex items-center gap-3 mx-auto">
+                    ENTRE EM CONTATO
+                    <span class="material-symbols-outlined">mail</span>
+                </button>
             </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-16 bg-surface-container-low dark:bg-surface-dim">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-6 md:px-margin-desktop max-w-container-max mx-auto gap-unit">
+            <div class="flex items-center gap-2 mb-8 md:mb-0">
+                <span class="material-symbols-outlined text-primary" data-icon="design_services">design_services</span>
+                <span class="font-headline-md text-headline-md text-on-surface">manuelldesigner</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
+                <a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">Portfolio</a>
+                <a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">Services</a>
+                <a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">About</a>
+                <a class="font-label-sm text-label-sm text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">Contact</a>
+            </div>
+            <p class="font-label-sm text-label-sm text-secondary dark:text-secondary-fixed opacity-60">
+                © 2024 manuelldesigner. All rights reserved.
+            </p>
         </div>
-    </div>
-
-    <div class="section3">
-        <div class="social">
-            <h3>Entre em contato</h3>
-            <p>Email: contato@manuellart.com</p>
-            <p>Telefone: +244 942 347 516</p>
-            <a href="https://www.facebook.com/profile.php?id=100063853777708" target="_blank"><i
-                    class="fab fa-facebook"></i></a>
-            <a href="https://wa.me/244942347516?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20Manuellart."
-                target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.instagram.com/horaciomanuel99/" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-
-
-
+    </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuButton = document.querySelector('.menu1 .logo a[ip="botao"]');
-            const mobileLinks = document.querySelector('.menu1 .links');
-            const menuLinks = document.querySelectorAll('.menu1 .links a');
-            const menu = document.querySelector('.menu');
-            const menu1 = document.querySelector('.menu1');
+        // Simple Scroll Reveal Interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-            // Toggle menu
-            menuButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                mobileLinks.classList.toggle('active');
-                this.style.transform = mobileLinks.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0)';
-            });
-
-            // Fechar menu ao clicar em links
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    mobileLinks.classList.remove('active');
-                    menuButton.style.transform = 'rotate(0)';
-                });
-            });
-
-            // Efeito de scroll
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 50) {
-                    menu?.classList.add('scrolled');
-                    menu1?.classList.add('scrolled');
-                } else {
-                    menu?.classList.remove('scrolled');
-                    menu1?.classList.remove('scrolled');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
-        });
-    </script>
-    <script>
-        // Seleciona todas as imagens da galeria
-        const imagens = document.querySelectorAll('.section1 .conteudo .cada img');
-        const modal = document.querySelector('.model');
-        const modalImg = modal.querySelector('img');
+        }, observerOptions);
 
-        // Função para abrir a modal com a imagem clicada
-        imagens.forEach(imagem => {
-            imagem.addEventListener('click', () => {
-                const src = imagem.getAttribute('data-src'); // Pega o src da imagem
-                modal.style.display = 'flex'; // Exibe a modal
-                modalImg.src = src; // Coloca a imagem na modal
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
-        // Função para fechar a modal ao clicar fora da imagem (na área preta)
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none'; // Fecha a modal
+        // TopAppBar transparency effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
             }
         });
-
     </script>
-
 </body>
 
 </html>
